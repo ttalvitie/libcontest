@@ -1,5 +1,4 @@
 #pragma once
-
 #include "boilerplate.hpp"
 
 // WARNING: be careful with overflows and accuracy. Check what the code does.

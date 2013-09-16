@@ -52,14 +52,23 @@ int main() {
 		}
 		
 		// Test that there are no augmenting paths.
-/*		std::vector<char> found(size, false);
+		std::vector<char> found(size, false);
 		queue<int> Q;
 		Q.push(s);
 		found[s] = true;
 		while(!Q.empty()) {
-			
+			int v = Q.front();
+			Q.pop();
+			if(v == t) fail();
+			for(int j = 0; j < ek.G[v].size(); ++j) {
+				if(ek.G[v][j].flow == ek.G[v][j].cap) continue;
+				int x = ek.G[v][j].dest;
+				if(found[x]) continue;
+				Q.push(x);
+				found[x] = true;
+			}
 		}
-*/	}
+	}
 	
 	return 0;
 }
