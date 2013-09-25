@@ -82,6 +82,26 @@ int main() {
 		for(int v = 0; v < n; ++v) {
 			failIfNotTreeComponent(p.first, v);
 		}
+		
+		double weight = 0.0;
+		for(int x = 0; x < n; ++x) {
+			for(int i = 0; i < p.first[x].size(); ++i) {
+				int y = p.first[x][i];
+				
+				double best = 1.0 / 0.0;
+				for(int ei = 0; ei < edges.size(); ++ei) {
+					if(
+						(edges[ei].second.first == x && edges[ei].second.second == y) ||
+						(edges[ei].second.first == y && edges[ei].second.second == x)
+					) {
+						best = min(best, edges[ei].first);
+					}
+				}
+				weight += best;
+			}
+		}
+		
+		if(weight != 2.0 * p.second) fail();
 	}
 	
 	return 0;

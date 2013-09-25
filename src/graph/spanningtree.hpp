@@ -18,7 +18,7 @@ pair<vector<vector<int> >, double> kruskal(
 	vector<vector<int> > span(n);
 	double weight = 0.0;
 	UnionFind c(n);
-	for(int i = edges.size() - 1; i >= 0; --i) {
+	for(int i = 0; i < edges.size(); ++i) {
 		int v1 = edges[i].second.first;
 		int v2 = edges[i].second.second;
 		if(c.find(v1) != c.find(v2)) {
