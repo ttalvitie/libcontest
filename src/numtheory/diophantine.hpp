@@ -2,10 +2,10 @@
 #include "boilerplate.hpp"
 
 struct DiophantineSolution {
-	int x;
-	int y;
-	int dx;
-	int dy;
+	Z x;
+	Z y;
+	Z dx;
+	Z dy;
 };
 
 void assign(Z& a, Z& b, Z aval, Z bval) {
