@@ -2,8 +2,11 @@
 #include "boilerplate.hpp"
 
 /// Array [0, n[ -> Z with fast queries of A[i] (x) A[i + 1] (x) ... (x) A[j - 1]
-/// for given i, j where (x) is the associative operation given by oper.
+/// for given i, j where (x) is the associative operator 'oper' (implement).
 struct QuerySegmentTree {
+	/// The associative operator to use. To be implemented by the user.
+	static Z oper(Z a, Z b); // { return <result>; }
+	
 	QuerySegmentTree(vector<int> src) {
 		N = 1;
 		while(N < src.size()) N *= 2;
@@ -43,14 +46,6 @@ struct QuerySegmentTree {
 			tree[x] = oper(tree[2 * x], tree[2 * x + 1]);
 			x /= 2;
 		}
-	}
-	
-	Z oper(Z a, Z b) {
-#ifdef QUERYSEGMENTTREE_OPER
-		return QUERYSEGMENTTREE_OPER(a, b);
-#else
-		return max(a, b);
-#endif
 	}
 	
 	int N;

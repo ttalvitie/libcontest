@@ -1,11 +1,13 @@
 #include "datastruct/bindtree.hpp"
-
-#define QUERYSEGMENTTREE_OPER(a, b) ((a) + (b))
 #include "datastruct/querysegtree.hpp"
 
 #include <boost/random.hpp>
 
 using namespace boost::random;
+
+Z QuerySegmentTree::oper(Z a, Z b) {
+	return a + b;
+}
 
 struct CmpImpl {
 	CmpImpl(int n) : tree(n, 0) { }
