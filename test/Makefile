@@ -4,7 +4,7 @@ TEST := $(SRC:.cpp=.test)
 all: $(TEST)
 
 %.test: %.cpp
-	g++ $< -o $@ -I../src/ -Wall -g -MMD -O2 -Wno-sign-compare
+	g++ $< -o $@ -I../src/ -Wall -O2 -g -MMD -Wno-sign-compare
 
 clean:
 	rm $(TEST)

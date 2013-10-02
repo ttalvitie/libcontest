@@ -1,5 +1,8 @@
 #include "datastruct/bindtree.hpp"
 
+#define QUERYSEGMENTTREE_OPER(a, b) ((a) + (b))
+#include "datastruct/querysegtree.hpp"
+
 #include <boost/random.hpp>
 
 using namespace boost::random;
@@ -34,6 +37,7 @@ int main() {
 		int n = length_dist(rng);
 		BinIndexedTree a(n);
 		CmpImpl b(n);
+		QuerySegmentTree c(std::vector<Z>(n, 0));
 		
 		uniform_int_distribution<int> ind_dist(0, max(n - 1, 0));
 		uniform_int_distribution<int> end_dist(0, n);
@@ -44,11 +48,16 @@ int main() {
 					Z x = val_dist(rng);
 					a.change(i, x);
 					b.change(i, x);
+					c.set(i, c.query(i, i + 1) + x);
 				}
 			}
 			
 			int i = end_dist(rng);
-			if(a.sum(i) != b.sum(i)) fail();
+			Z A = a.sum(i);
+			Z B = b.sum(i);
+			Z C = 0;
+			if(i != 0) C = c.query(0, i);
+			if(A != B || B != C) fail();
 		}
 	}
 	

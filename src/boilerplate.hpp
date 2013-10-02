@@ -40,9 +40,9 @@ const double PI = 4 * atan(1);
 
 void fail(string msg) {
 	cerr << "FAIL: " << msg << "\n";
-	exit(1);
+	abort();
 }
 void fail() {
 	cerr << "FAIL\n";
-	exit(1);
+	abort();
 }
