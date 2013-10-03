@@ -6,7 +6,6 @@ using namespace boost::random;
 
 vector<int> zAlgorithmCmpImpl(const string& S) {
 	int n = S.size();
-	if(n == 0) fail();
 	vector<int> ret(n);
 	
 	for(int i = 0; i < n; ++i) {
@@ -21,7 +20,7 @@ vector<int> zAlgorithmCmpImpl(const string& S) {
 int main() {
 	mt19937 rng;
 	
-	uniform_int_distribution<int> length_dist(1, 100);
+	uniform_int_distribution<int> length_dist(0, 100);
 	uniform_int_distribution<int> alph_dist(1, 6);
 	
 	for(int t = 0; t < 400000; ++t) {
@@ -29,7 +28,7 @@ int main() {
 		int k = alph_dist(rng);
 		uniform_int_distribution<int> char_dist('A', 'A' + k - 1);
 		
-		string S;
+		vector<int> S;
 		for(int i = 0; i < n; ++i) {
 			S.push_back(char_dist(rng));
 		}

@@ -3,11 +3,9 @@
 
 /// Return vector containing for each position i the length of the longest
 /// substring that is also a prefix of the string.
-vector<int> zAlgorithm(const string& S) {
+vector<int> zAlgorithm(const vector<int>& S) {
 	int n = S.size();
-	if(n == 0) fail();
-	vector<int> ret(n);
-	ret[0] = n;
+	vector<int> ret(n, 0);
 	
 	int L = 0;
 	int R = 0;
