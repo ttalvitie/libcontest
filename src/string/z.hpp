@@ -18,15 +18,13 @@ vector<int> zAlgorithm(const string& S) {
 			while(R < n && S[R - L] == S[R]) ++R;
 			ret[i] = R - L;
 			--R;
+		} else if(ret[i - L] < R - i + 1) {
+			ret[i] = ret[i - L];
 		} else {
-			if(ret[i - L] < R - i + 1) {
-				ret[i] = ret[i - L];
-			} else {
-				L = i;
-				while(R < n && S[R - L] == S[R]) ++R;
-				ret[i] = R - L;
-				--R;
-			}
+			L = i;
+			while(R < n && S[R - L] == S[R]) ++R;
+			ret[i] = R - L;
+			--R;
 		}
 	}
 	
