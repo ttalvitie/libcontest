@@ -6,6 +6,8 @@
 /// Compute the convex hull of given set of points. The points on the edges
 /// of the hull are not listed in the result (if floating point numbers are
 /// used, inaccuracy may cause them to be listed).
+///
+/// Runs in linear time, uses Andrew's monotone chain algorithm.
 vector<V> computeConvexHull(vector<V> points) {
 	auto cmp = [](V a, V b) {
 		if(a.real() == b.real()) {
