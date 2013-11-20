@@ -1,12 +1,12 @@
 #include "numtheory/diophantine.hpp"
 #include "numtheory/basic.hpp"
 
-DiophantineSolution bruteSolve(Z a, Z b, Z c) {
-	Z x = 0;
-	Z x1 = -1;
-	Z y1 = -1;
-	Z x2 = -1;
-	Z y2 = -1;
+DiophantineSolution bruteSolve(int64_t a, int64_t b, int64_t c) {
+	int64_t x = 0;
+	int64_t x1 = -1;
+	int64_t y1 = -1;
+	int64_t x2 = -1;
+	int64_t y2 = -1;
 	while(true) {
 		if((c - a * x) % b == 0) {
 			if(x1 == -1) {
