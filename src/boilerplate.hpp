@@ -29,7 +29,7 @@ using namespace std;
 #endif
 typedef complex<VC> V;
 
-// Integer type used for integers apart from indices.
+// Signed integer type used for integers apart from indices.
 #ifdef INT_TYPE
 	typedef INT_TYPE Z;
 #else
