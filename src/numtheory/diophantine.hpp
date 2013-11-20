@@ -13,8 +13,6 @@ void assign(int64_t& a, int64_t& b, int64_t aval, int64_t bval) {
 	b = bval;
 }
 
-double lol = 0.0;
-
 /// Solve linear diophantine equation ax + by = c. If there is no solution
 /// (iff gcd(a, b) does not divide c), fails. Returns structure containing
 /// a solution (x, y), all solutions are (x + t * dx, y + t * dy), for all
