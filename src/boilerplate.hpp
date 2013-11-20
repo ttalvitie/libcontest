@@ -20,6 +20,7 @@ using namespace std;
 #include <stack>     // stack
 #include <string>    // string
 #include <sstream>   // stringstream
+#include <tuple>     // tuple
 #include <vector>    // vector
 
 // Complex number/vector type for geometry.
