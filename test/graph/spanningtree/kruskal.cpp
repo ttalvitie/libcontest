@@ -1,9 +1,5 @@
 #include "graph/spanningtree.hpp"
 
-#include <boost/random.hpp>
-
-using namespace boost::random;
-
 void findComponent(const vector<vector<int> >& G, int v, set<int>& c) {
 	c.insert(v);
 	for(int i = 0; i < G[v].size(); ++i) {

@@ -1,9 +1,5 @@
 #include "string/z.hpp"
 
-#include <boost/random.hpp>
-
-using namespace boost::random;
-
 vector<int> zAlgorithmCmpImpl(const string& S) {
 	int n = S.size();
 	vector<int> ret(n);

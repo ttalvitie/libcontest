@@ -1,10 +1,6 @@
 #define INT_TYPE long long int
 #include "game/nim.hpp"
 
-#include <boost/random.hpp>
-
-using namespace boost::random;
-
 int main() {
 	mt19937 rng;
 	

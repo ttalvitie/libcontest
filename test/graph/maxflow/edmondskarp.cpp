@@ -1,9 +1,5 @@
 #include "graph/maxflow.hpp"
 
-#include <boost/random.hpp>
-
-using namespace boost::random;
-
 int main() {
 	mt19937 rng;
 	uniform_int_distribution<int> sizedist(2, 40);

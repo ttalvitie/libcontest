@@ -1,9 +1,5 @@
 #include "datastruct/querysegtree.hpp"
 
-#include <boost/random.hpp>
-
-using namespace boost::random;
-
 Z QuerySegmentTree::oper(Z a, Z b) {
 	return a ^ b;
 }

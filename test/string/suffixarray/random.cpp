@@ -1,9 +1,5 @@
 #include "string/suffixarray.hpp"
 
-#include <boost/random.hpp>
-
-using namespace boost::random;
-
 vector<int> constructSuffixArrayCmpImpl(const vector<Z>& S) {
 	int n = S.size();
 	string Ss;
