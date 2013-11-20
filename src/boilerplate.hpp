@@ -15,6 +15,7 @@ using namespace std;
 #include <list>      // list
 #include <map>       // map
 #include <queue>     // queue, priority_queue
+#include <random>    // mt19937, uniform_int_distribution, uniform_real_distribution, ...
 #include <set>       // set
 #include <stack>     // stack
 #include <string>    // string

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "boilerplate.hpp"
-#include <boost/random.hpp>
 
 namespace testutil {
 	mt19937 rng;
