@@ -7,7 +7,7 @@ struct QuerySegmentTree {
 	/// The associative operator to use. To be implemented by the user.
 	static Z oper(Z a, Z b); // { return <result>; }
 	
-	QuerySegmentTree(vector<int> src) {
+	QuerySegmentTree(vector<Z> src) {
 		N = 1;
 		while(N < src.size()) N *= 2;
 		tree.resize(2 * N);
