@@ -25,8 +25,6 @@ struct BinIndexedTree {
 		return ret;
 	}
 	
-	
-	
 	int n;
 	vector<Z> tree;
 };
