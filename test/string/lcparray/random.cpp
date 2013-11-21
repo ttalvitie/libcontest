@@ -1,22 +1,5 @@
 #include "string/suffixarray.hpp"
-
-vector<int> constructSuffixArrayCmpImpl(const vector<Z>& S) {
-	int n = S.size();
-	string Ss;
-	for(int i = 0; i < n; ++i) Ss.push_back(S[i]);
-	vector<string> suf;
-	for(int i = 0; i <= n; ++i) {
-		suf.push_back(Ss.substr(i));
-	}
-	sort(suf.begin(), suf.end());
-	
-	vector<int> ret;
-	for(int i = 0; i <= n; ++i) {
-		ret.push_back(n - suf[i].size());
-	}
-	
-	return ret;
-}
+#include "string/lcparray.hpp"
 
 int main() {
 	mt19937 rng;
@@ -38,11 +21,16 @@ int main() {
 			S.push_back(char_dist(rng));
 		}
 		
-		vector<int> a = constructSuffixArray(S);
-		vector<int> b = constructSuffixArrayCmpImpl(S);
-
-		if(a.size() != b.size()) fail();
-		if(!equal(a.begin(), a.end(), b.begin())) fail();
+		vector<int> A = constructSuffixArray(S);
+		vector<int> LCP = constructLCPArray(S, A);
+		
+		if(LCP.size() != n + 1) fail();
+		if(LCP[0] != 0) fail();
+		for(int i = 1; i <= n; ++i) {
+			int cmp = 0;
+			while(A[i] + cmp < n && A[i - 1] + cmp < n && S[A[i] + cmp] == S[A[i - 1] + cmp]) ++cmp;
+			if(LCP[i] != cmp) fail();
+		}
 	}
 	
 	return 0;
