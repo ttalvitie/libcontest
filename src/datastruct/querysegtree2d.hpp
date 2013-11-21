@@ -1,8 +1,7 @@
 #pragma once
 #include "boilerplate.hpp"
 
-/// Array [0, w[ x [0, h[ -> Z with fast queries of given associative and
-/// commutative operations for which oper(0, 0) = 0 in given rectangle.
+/// Array [0, w[ x [0, h[ -> Z with fast queries of given rectangles.
 struct QuerySegmentTree2D {
 	/// The associative and commutative operator to use. To be implemented by
 	/// the user. Should output (0, 0) -> 0.
