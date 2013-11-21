@@ -1,7 +1,7 @@
 #pragma once
 #include "boilerplate.hpp"
 
-/// Compute the strongly connected components of a graph given as adjacency
+/// Compute the strongly connected components of a directed graph given as adjacency
 /// lists. The result is a vector of the strongly connected components, each
 /// given as a vector of vertex indices.
 ///
