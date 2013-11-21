@@ -1,5 +1,9 @@
 #include "datastruct/bindtree2d.hpp"
-#include "datastruct/querysegtree.hpp"
+#include "datastruct/querysegtree2d.hpp"
+
+Z QuerySegmentTree2D::oper(Z a, Z b) {
+	return a + b;
+}
 
 struct CmpImpl {
 	CmpImpl(int w, int h) : tree(w, vector<Z>(h, 0)) { }
@@ -32,6 +36,7 @@ int main() {
 		int h = length_dist(rng);
 		BinIndexedTree2D a(w, h);
 		CmpImpl b(w, h);
+		QuerySegmentTree2D c(w, h);
 		
 		uniform_int_distribution<int> indx_dist(0, max(w - 1, 0));
 		uniform_int_distribution<int> indy_dist(0, max(h - 1, 0));
@@ -45,6 +50,7 @@ int main() {
 					Z v = val_dist(rng);
 					a.change(x, y, v);
 					b.change(x, y, v);
+					c.set(x, y, c.query(x, y, x + 1, y + 1) + v);
 				}
 			}
 			
@@ -52,7 +58,8 @@ int main() {
 			int y = endy_dist(rng);
 			Z A = a.sum(x, y);
 			Z B = b.sum(x, y);
-			if(A != B) fail();
+			Z C = c.query(0, 0, x, y);
+			if(A != B || B != C) fail();
 		}
 	}
 	
