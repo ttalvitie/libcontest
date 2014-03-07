@@ -38,6 +38,9 @@ typedef complex<VC> V;
 	typedef int Z;
 #endif
 
+// Global random generator.
+mt19937 rng;
+
 const double PI = 4 * atan(1);
 
 void fail(string msg) {
