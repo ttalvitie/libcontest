@@ -6,14 +6,12 @@ struct Treap {
 	Treap(const T& elem)
 		: elem(elem),
 		  p(rng()),
-		  left(nullptr),
-		  right(nullptr)
+		  c{nullptr, nullptr}
 	{ }
 	
 	T elem;
 	int p;
-	Treap<T>* left;
-	Treap<T>* right;
+	Treap<T>* c[2];
 };
 
 template <typename T>
@@ -21,25 +19,21 @@ Treap<T>* addNode(Treap<T>*& treap, Treap<T>* node) {
 	if(treap == nullptr) {
 		treap = node;
 	} else {
-		if(node->elem < treap->elem) {
-			addNode(treap->left, node);
-			Treap<T>* v = treap->left;
-			if(v->p > treap->p) {
-				treap->left = v->right;
-				v->right = treap;
-				treap = v;
-			}
-		} else {
-			addNode(treap->right, node);
-			Treap<T>* v = treap->right;
-			if(v->p > treap->p) {
-				treap->right = v->left;
-				v->left = treap;
-				treap = v;
-			}
+		int s = make_pair(treap->elem, treap) < make_pair(node->elem, node);
+		addNode(treap->c[s], node);
+		Treap<T>* v = treap->c[s];
+		if(v->p > treap->p) {
+			treap->c[s] = v->c[1 - s];
+			v->c[1 - s] = treap;
+			treap = v;
 		}
 	}
 	return node;
+}
+
+template <typename T>
+Treap<T>* addNode(Treap<T>*& treap, const T& elem) {
+	return addNode(treap, new Treap<T>(elem));
 }
 
 template <typename T>
@@ -47,15 +41,10 @@ Treap<T>* lowerBound(Treap<T>* treap, const T& elem) {
 	if(treap == nullptr) return nullptr;
 	
 	if(treap->elem >= elem) {
-		Treap<T>* x = lowerBound(treap->left, elem);
+		Treap<T>* x = lowerBound(treap->c[0], elem);
 		if(x) return x;
 		return treap;
 	} else {
-		return lowerBound(treap->right, elem);
+		return lowerBound(treap->c[1], elem);
 	}
-}
-
-template <typename T>
-Treap<T>* addNode(Treap<T>*& treap, const T& elem) {
-	return addNode(treap, new Treap<T>(elem));
 }
